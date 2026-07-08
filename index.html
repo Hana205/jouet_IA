@@ -209,7 +209,15 @@
 // ---------- Configuration du Worker ----------
 // ⚠️ Remplace cette URL par celle obtenue après "wrangler deploy"
   WORKER_URL = "https://coach-langues-proxy.anna-mecatronics.workers.dev";
-
+const response = await fetch(WORKER_URL, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    prompt: texteUtilisateur
+  })
+});
 // ---------- État global ----------
 let targetLanguage = 'zh';
 let currentMode = 'translation';
